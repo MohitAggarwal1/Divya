@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Divya Jaanu ❤️</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe4ec, #fff0f5);
+      overflow-x: hidden;
+      font-family: system-ui, sans-serif;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(0.7);
+      }
+
+      to {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex-col items-center justify-center text-pink-700">
+
+  <!-- 🔒 PASSWORD SCREEN -->
+  <div id="lockScreen" class="fixed inset-0 flex items-center justify-center bg-pink-100 z-50">
+    <div class="bg-white rounded-2xl shadow-xl p-6 w-80 text-center">
+      <h1 class="text-2xl font-bold mb-2">For My Love Only 💕</h1>
+      <p class="text-sm mb-4">Enter the date we met</p>
+
+      <input id="password" type="password" placeholder="DDMM"
+        class="w-full border rounded-lg px-3 py-2 text-center focus:outline-none focus:ring-2 focus:ring-pink-300" />
+
+      <button onclick="unlock()"
+        class="w-full mt-4 bg-pink-400 hover:bg-pink-500 text-white py-2 rounded-lg transition">
+        Unlock ❤️
+      </button>
+
+      <p id="error" class="text-red-400 mt-3 hidden">Jaanu you don't know the date 🥺</p>
+    </div>
+  </div>
+
+  <!-- 💕 FLOATING HEARTS -->
+  <div id="hearts"></div>
+
+  <script>
+    function unlock() {
+      const pass = document.getElementById("password").value;
+      const error = document.getElementById("error");
+
+      if (pass === "1110") {
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("content").classList.remove("hidden");
+      } else {
+        error.classList.remove("hidden");
+      }
+    }
+
+    // Floating hearts generator
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 14 + "px";
+
+      document.getElementById("hearts").appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }, 400);
+  </script>
+
+  <section>
+    <!-- 🎶 PLAY MUSIC SECTION -->
+    <audio id="bgMusic" loop>
+      <source src="assets/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="mt-5 ml-5 top-4 left-4 z-40 flex items-center gap-2">
+      <button id="musicBtn" onclick="toggleMusic()"
+        class="bg-pink-400 hover:bg-pink-500 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition">
+        ▶️
+      </button>
+      <span id="musicText" class="text-pink-600 font-semibold text-sm select-none">
+        Play Music
+      </span>
+    </div>
+  </section>
+
+  <style>
+    .pulse-heart {
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .music-note {
+      position: fixed;
+      bottom: 0;
+      animation: floatNote 3s linear forwards;
+      pointer-events: none;
+      z-index: 30;
+    }
+
+    @keyframes floatNote {
+      from {
+        transform: translateY(0) scale(0.8);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+    const text = document.getElementById("musicText");
+    let playing = false;
+    let notesInterval;
+
+    function toggleMusic() {
+      if (!playing) {
+        music.play();
+        btn.textContent = "💖";
+        btn.classList.add("pulse-heart");
+        text.textContent = "Music Playing";
+        startNotes();
+      } else {
+        music.pause();
+        btn.textContent = "▶️";
+        btn.classList.remove("pulse-heart");
+        text.textContent = "Play Music";
+        stopNotes();
+      }
+      playing = !playing;
+    }
+
+    function startNotes() {
+      notesInterval = setInterval(() => {
+        const note = document.createElement("div");
+        note.className = "music-note";
+        note.innerHTML = Math.random() > 0.5 ? "🎵" : "🎶";
+        note.style.left = Math.random() * 100 + "vw";
+        note.style.fontSize = Math.random() * 14 + 16 + "px";
+        document.body.appendChild(note);
+        setTimeout(() => note.remove(), 3000);
+      }, 500);
+    }
+
+    function stopNotes() {
+      clearInterval(notesInterval);
+    }
+  </script>
+
+  <!-- 💕 HEADER SECTION -->
+  <div class="text-center py-10 px-4 flex-col">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-pink-600 mb-4">
+      💕 My Love 💕
+    </h1>
+
+    <p class="text-lg sm:text-xl text-pink-500 max-w-md mx-auto leading-relaxed">
+      I'm so so <span class="font-bold text-pink-700">SORRY</span>...<br>
+      I love you more than words can say! 🥺💖
+    </p>
+
+    <!-- Decorative hearts -->
+    <div class="flex justify-center mt-6 gap-2 text-2xl">
+      <span class="animate-pulse">💗</span>
+      <span class="animate-bounce">💖</span>
+      <span class="animate-pulse">💕</span>
+    </div>
+  </div>
+
+  <!-- 💌 ENVELOPE → NOTE TRANSFORM SECTION -->
+  <section class="py-16 px-4 flex flex-col items-center text-center">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-pink-600 mb-3">
+      Letters From My Heart
+    </h2>
+    <p class="text-pink-500 mb-10 max-w-md">
+      Tap an envelope. Let it open into what I feel.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-8">
+
+      <!-- CARD 1 -->
+      <div
+        class="card w-44 h-32 bg-pink-200 rounded-xl shadow-lg cursor-pointer transition-all duration-500 flex items-center justify-center text-pink-700 font-semibold"
+        onclick="toggleCard(this)" data-open="false">
+        <div class="front text-3xl">✉️</div>
+        <div class="back hidden text-sm px-4">
+          I don’t always say it, but you are my calm.
+          You make heavy days feel lighter just by existing.
+          <div class="mt-3 text-right font-bold text-pink-500">— Always yours</div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div
+        class="card w-44 h-32 bg-pink-300 rounded-xl shadow-lg cursor-pointer transition-all duration-500 flex items-center justify-center text-pink-700 font-semibold"
+        onclick="toggleCard(this)" data-open="false">
+        <div class="front text-3xl">✉️</div>
+        <div class="back hidden text-sm px-4">
+          I know I hurt you, and I regret it deeply.
+          I am learning, growing, and loving you more carefully.
+          <div class="mt-3 text-right font-bold text-pink-500">— Truly sorry</div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div
+        class="card w-44 h-32 bg-pink-400 rounded-xl shadow-lg cursor-pointer transition-all duration-500 flex items-center justify-center text-pink-700 font-semibold"
+        onclick="toggleCard(this)" data-open="false">
+        <div class="front text-3xl">✉️</div>
+        <div class="back hidden text-sm px-4">
+          I promise to listen, to grow, and to choose you.
+          Not once. Not sometimes. Always.
+          <div class="mt-3 text-right font-bold text-pink-500">— My promise</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    function toggleCard(card) {
+      // Close all other cards
+      document.querySelectorAll(".card").forEach(c => {
+        if (c !== card) closeCard(c);
+      });
+
+      const isOpen = card.dataset.open === "true";
+      isOpen ? closeCard(card) : openCard(card);
+    }
+
+    function openCard(card) {
+      card.dataset.open = "true";
+      card.classList.remove("h-32");
+      card.classList.add("h-56", "scale-105", "bg-white");
+      card.querySelector(".front").classList.add("hidden");
+      card.querySelector(".back").classList.remove("hidden");
+    }
+
+    function closeCard(card) {
+      card.dataset.open = "false";
+      card.classList.add("h-32");
+      card.classList.remove("h-56", "scale-105", "bg-white");
+      card.querySelector(".front").classList.remove("hidden");
+      card.querySelector(".back").classList.add("hidden");
+    }
+  </script>
+
+  <!-- 📸 POLAROID MEMORY STACK -->
+  <section class="py-20 px-4 flex flex-col items-center text-center">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-pink-600 mb-3">
+      📸 Our Little Memories
+    </h2>
+    <p class="text-pink-500 mb-10 max-w-md">
+      Tap the memory… some moments love to come back again 💕
+    </p>
+
+    <!-- Stack -->
+    <div id="memoryStack" class="relative w-72 h-96 cursor-pointer select-none">
+
+      <!-- Memory 1 -->
+      <div class="memory rotate-2">
+        <img src="assets/1.jpeg" />
+      </div>
+
+      <!-- Memory 2 -->
+      <div class="memory -rotate-2">
+        <video src="assets/2.mp4" muted loop></video>
+      </div>
+
+      <!-- Memory 3 -->
+      <div class="memory rotate-1">
+        <img src="assets/3.jpeg" />
+      </div>
+
+      <!-- Memory 4 -->
+      <div class="memory -rotate-2">
+        <video src="assets/4.mp4" muted loop></video>
+      </div>
+
+      <!-- Memory 5 -->
+      <div class="memory -rotate-2">
+        <video src="assets/5.mp4" muted loop></video>
+      </div>
+
+      <!-- Memory 6 -->
+      <div class="memory rotate-1">
+        <img src="assets/6.jpeg" />
+      </div>
+
+      <!-- Memory 7 -->
+      <div class="memory rotate-1">
+        <img src="assets/7.jpeg" />
+      </div>
+
+      <!-- Memory 8 -->
+      <div class="memory rotate-1">
+        <img src="assets/8.jpeg" />
+      </div>
+
+      <!-- Memory 9 -->
+      <div class="memory rotate-1">
+        <img src="assets/9.jpeg" />
+      </div>
+
+      <!-- Memory 10 -->
+      <div class="memory rotate-1">
+        <img src="assets/10.jpeg" />
+      </div>
+
+      <!-- Memory 11 -->
+      <div class="memory rotate-1">
+        <img src="assets/11.jpeg" />
+      </div>
+    </div>
+
+    <p class="mt-10 text-pink-400 text-sm">
+      (Keep tapping… just like flipping old photos 🥹📸)
+    </p>
+  </section>
+
+  <style>
+    .memory {
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      transition: transform 0.6s ease, opacity 0.4s ease;
+    }
+
+    .memory img,
+    .memory video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .going-back {
+      transform: translateY(40px) scale(0.95) rotate(-8deg);
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+    const stack = document.getElementById("memoryStack");
+
+    function updateZ() {
+      const cards = stack.querySelectorAll(".memory");
+      cards.forEach((card, index) => {
+        card.style.zIndex = cards.length - index;
+      });
+    }
+
+    updateZ();
+
+    stack.addEventListener("click", () => {
+      const cards = stack.querySelectorAll(".memory");
+      const top = cards[0];
+
+      // Animate top going back
+      top.classList.add("going-back");
+
+      setTimeout(() => {
+        top.classList.remove("going-back");
+        stack.appendChild(top);
+        updateZ();
+
+        // Video handling
+        cards.forEach(c => {
+          const v = c.querySelector("video");
+          if (v) v.pause();
+        });
+
+        const topVideo = stack.querySelector(".memory video");
+        if (topVideo) topVideo.play();
+      }, 500);
+    });
+  </script>
+
+  <!-- 💕 FLOATING HEARTS LOVE SECTION -->
+  <section class="py-20 px-4 text-center relative overflow-hidden">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-pink-600 mb-3">
+      💕 Things I Love About You
+    </h2>
+    <p class="text-pink-500 mb-10 max-w-md mx-auto">
+      Tap the hearts… each one hides something I adore about you 🥹❤️
+    </p>
+
+    <div id="heartArea" class="relative h-80"></div>
+  </section>
+
+  <style>
+    .floating-heart {
+      position: absolute;
+      animation: floatUp 8s linear forwards;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100%);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(-120%);
+        opacity: 0;
+      }
+    }
+
+    .love-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 182, 193, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <script>
+    const messages = [
+      "The way you look at me when you think I’m not noticing 🥹",
+      "How you remember the smallest things about me ❤️",
+      "Your smile fixes my worst days 😍",
+      "You make silence feel comfortable 🫂",
+      "Being with you feels easy… and right ✨",
+      "You make my heart feel calm 💖",
+      "Your laugh stays in my head all day 😌",
+      "Even your anger is cute sometimes 😅❤️",
+      "You feel like home, no matter where we are 🏡💞",
+      "I find comfort just holding your hand 🤍",
+      "You make me want to be better 🥹✨",
+      "With you, even nothing feels special 💫",
+      "I love how you care without showing it ❤️",
+      "You’re my favorite part of every day 💖",
+      "I choose you. Again and again. Always 😘",
+      "You make my heart feel safe 🫂❤️",
+      "Loving you feels natural ✨",
+      "You’re the calm in my chaos 🥹",
+      "Your presence alone is enough 💖",
+      "I smile more because of you 😌",
+      "You matter to me… deeply ❤️"
+    ];
+
+    const heartArea = document.getElementById("heartArea");
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      heart.textContent = "💗";
+      heart.style.left = Math.random() * 90 + "%";
+      heart.style.bottom = "0";
+
+      heart.onclick = () => {
+        showLove();
+        heart.remove();
+      };
+
+      heartArea.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }, 900);
+
+    function showLove() {
+      const popup = document.createElement("div");
+      popup.className = "love-popup";
+      popup.innerHTML = `
+      <div class="bg-white p-6 rounded-2xl shadow-xl max-w-xs text-pink-700 text-lg">
+        ${messages[Math.floor(Math.random() * messages.length)]}
+      </div>
+    `;
+      popup.onclick = () => popup.remove();
+      document.body.appendChild(popup);
+    }
+  </script>
+
+  <!-- 💖 DO YOU LOVE ME SECTION -->
+  <section class="py-24 px-4 flex flex-col items-center text-center">
+
+    <!-- GIF PLACEHOLDER -->
+    <div id="gifArea"
+      class="mb-8 w-64 h-40 rounded-2xl bg-pink-100 flex items-center justify-center text-pink-400 text-sm shadow-inner">
+      <img src="https://i.pinimg.com/originals/c7/33/9a/c7339a531d54a28dddec8183397601d2.gif" alt="I Love You">
+    </div>
+
+    <h2 id="question" class="text-3xl sm:text-4xl font-extrabold text-pink-600 mt-10 mb-8">
+      Do you love me? 🥺❤️
+    </h2>
+
+    <!-- Buttons -->
+    <div id="buttons" class="flex gap-6">
+      <button onclick="answerYes()"
+        class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-full font-bold shadow-lg transition">
+        Yes 💖
+      </button>
+      <button onclick="answerNo()"
+        class="bg-white border-2 border-pink-400 text-pink-600 px-6 py-3 rounded-full font-bold shadow-lg transition">
+        No 🙄
+      </button>
+    </div>
+
+  </section>
+
+  <script>
+    let step = 0;
+
+    function answerYes() {
+      const q = document.getElementById("question");
+      const btns = document.getElementById("buttons");
+
+      if (step === 0) {
+        q.innerHTML = "I knew it 😌❤️";
+        endLove();
+      }
+      else if (step === 2) {
+        q.innerHTML = "Ohhh… I knew krti h 😏💖";
+        endLove();
+      }
+    }
+
+    function answerNo() {
+      const q = document.getElementById("question");
+
+      if (step === 0) {
+        q.innerHTML = "Ek aur baar soch le 😒❤️";
+        step = 1;
+      }
+      else if (step === 1) {
+        q.innerHTML = "Shi m nhi krti? 😢💔";
+        step = 2;
+      }
+      else if (step === 2) {
+        q.innerHTML = "Nhi… krti h… I knew it 😌💖";
+        endLove();
+      }
+    }
+
+    function endLove() {
+      const btns = document.getElementById("buttons");
+      btns.innerHTML = "";
+
+      setTimeout(() => {
+        document.getElementById("question").innerHTML =
+          "I too love you my jaanu 😘❤️💞";
+      }, 1200);
+    }
+  </script>
+
+  <!-- 🎁 SURPRISE SECTION -->
+  <section class="py-24 px-4 text-center">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-pink-600 mb-6">
+      🎁 One Last Thing…
+    </h2>
+
+    <button onclick="revealSurprise()"
+      class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl transition animate-pulse">
+      Open Your Surprise 💖
+    </button>
+  </section>
+
+  <script>
+    function revealSurprise() {
+      document.body.innerHTML = `
+      <div class="min-h-screen flex flex-col items-center justify-center bg-pink-100 text-center px-6">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-pink-600 mb-6">
+          I Love You ❤️
+        </h1>
+        <p class="text-lg sm:text-xl text-pink-700 max-w-md">
+          Not because I have to.  
+          Not because I should.  
+          But because my heart chose you…  
+          and it always will 🥹💖
+        </p>
+        <div class="mt-8 text-3xl">💞💞💞</div>
+      </div>
+    `;
+    }
+  </script>
+
+</body>
+
+</html>
